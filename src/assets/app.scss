@@ -1,0 +1,45 @@
+:root {
+    --primary-color: #7b1fa2;
+    --primary-color-light: #e5b9f73b;
+}
+
+
+.card {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-radius: 15px;
+}
+
+.table {
+    tbody tr td {
+        padding: .9rem .75rem;
+    }
+
+    thead {
+        border-bottom: 2px solid #dee2e6;
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    tr th {
+        padding: .5rem  0.75rem;
+    }
+
+    tbody tr:hover {
+        background: #fff;
+        cursor: pointer;
+        transition: .2s;
+        transform: scale(1.01) !important;
+        box-shadow: 2px 4px 15px 3px rgba(25, 42, 70, 0.11);
+        border: 1px solid var(--primary-color-light);
+    }
+    
+    tbody tr {
+        border: 1px solid var(--primary-color-light);
+    }
+}
+
+.table-hover>tbody>tr:hover {
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+    --bs-table-accent-bg: var(--primary-color-light);
+    color: var(--bs-table-hover-color);
+}
