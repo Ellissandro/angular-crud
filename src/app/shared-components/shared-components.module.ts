@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
         MatIconModule,
     ],
     declarations: [
-        HeaderComponent
+        HeaderComponent,
     ]
 })
 export class SharedComponentsModule { }

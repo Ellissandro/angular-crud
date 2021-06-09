@@ -9,6 +9,22 @@
     border-radius: 15px;
 }
 
+.color-theme, h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+}
+
+.bg-theme {
+    background-color: var(--primary-color);
+}
+
+.valign-middle {
+    vertical-align: middle;
+}
+
+.valign-bottom {
+    vertical-align: bottom;
+}
+
 .table {
     tbody tr td {
         padding: .9rem .75rem;
@@ -35,6 +51,8 @@
     
     tbody tr {
         border: 1px solid var(--primary-color-light);
+        border-left: none;
+        border-right: none;
     }
 }
 
