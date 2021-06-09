@@ -1,6 +1,6 @@
 <section>
     <div id="particle-container">
-        <div *ngFor="let p of particles.split('')" class="particle"></div>
+        <div *ngFor="let p of particles" class="particle"></div>
     </div>
     <div>
         <div class="card card-custom"></div>
@@ -36,6 +36,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div id="particle-container">
+            <div *ngFor="let p of particles" class="particle"></div>
         </div>
     </div>
 </section>

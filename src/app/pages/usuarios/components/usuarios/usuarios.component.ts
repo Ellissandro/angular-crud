@@ -10,15 +10,21 @@ import { Usuario } from '../../usuarios.model';
 })
 
 export class UsuariosComponent implements OnInit {
-  particles = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry';
+  particles = [];
   usuarios: Observable<Usuario[]>;
   constructor(private usuarioService: UsuariosService) { }
 
   ngOnInit(): void {
+    this.generateParticles();
     this.load();
   }
 
   async load() {
     this.usuarios = this.usuarioService.getData();
+  }
+  generateParticles() {
+    for (let i = 0; i < 500; i++) {
+      this.particles.push(i)
+    }
   }
 }
