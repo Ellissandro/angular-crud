@@ -21,12 +21,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let usuario of (usuarios | async); index as i">
+                        <tr *ngFor="let user of users; index as i" class="animate__animated animate__fadeIn">
                             <td>{{ i + 1 }}</td>
-                            <td>{{ usuario.name }}</td>
-                            <td>{{ usuario.email }}</td>
-                            <td class="text-center">{{ usuario.idade }}</td>
-                            <td class="text-center">{{ usuario.sexo }}</td>
+                            <td>{{ user.name }} {{ user.surname }}</td>
+                            <td>{{ user.email }}</td>
+                            <td class="text-center">{{ user.age }}</td>
+                            <td class="text-center">{{ user.gender }}</td>
                             <td class="text-center">
                                 <button class="mr-2 valign-middle">
                                     <div class="d-flex align-items-center">
@@ -35,7 +35,7 @@
                                         </mat-icon>
                                     </div>
                                 </button>
-                                <button class="text-danger valign-middle">
+                                <button (click)="deleteUser(user)" class="text-danger valign-middle">
                                     <div class="d-flex align-items-center">
                                         <mat-icon title="Excluir" aria-hidden="false" aria-label="delete">delete
                                         </mat-icon>
@@ -48,6 +48,9 @@
                         <div *ngFor="let p of particles" class="particle"></div>
                     </div>
                 </table>
+                <div *ngIf="users.length === 0" class="text-muted mt-3 text-center">
+                    <span>Nenhum registro encontrado</span>
+                </div>
             </div>
         </div>
     </div>

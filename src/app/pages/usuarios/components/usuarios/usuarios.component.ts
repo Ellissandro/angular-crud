@@ -1,9 +1,10 @@
 import { Observable } from 'rxjs';
 import { UsuariosService } from './../../usuarios.service';
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../../usuarios.model';
+import { IUsuario } from '../../../../shared-components/models/usuarios';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-usuarios',
@@ -13,7 +14,8 @@ import { ModalComponent } from '../modal/modal.component';
 
 export class UsuariosComponent implements OnInit {
   particles = [];
-  usuarios: Observable<Usuario[]>;
+  users: IUsuario[] = [];
+  temporaryUsers: IUsuario[] = [];
   constructor(private usuarioService: UsuariosService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -22,7 +24,10 @@ export class UsuariosComponent implements OnInit {
   }
 
   async load() {
-    this.usuarios = this.usuarioService.getData();
+    this.usuarioService.getData().subscribe(response => {
+      this.users = response;
+      this.temporaryUsers = [...this.users]
+    })
   }
   generateParticles() {
     for (let i = 0; i < 1000; i++) {
@@ -32,8 +37,19 @@ export class UsuariosComponent implements OnInit {
   openUserForm() {
     const dialogRef = this.dialog.open(ModalComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.componentInstance.onUserCreate.subscribe(response => {
+      this.temporaryUsers.push(response);
+      this.dialog.closeAll();
+      this.updateFilter();
     });
+  }
+
+  deleteUser(user: IUsuario) {
+    this.temporaryUsers.splice(this.temporaryUsers.findIndex(tempUser => tempUser.id === user.id), 1);
+    this.updateFilter();
+  }
+
+  updateFilter() {
+    this.users = this.temporaryUsers;
   }
 }
