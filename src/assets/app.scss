@@ -65,3 +65,23 @@
     --bs-table-accent-bg: var(--primary-color-light);
     color: var(--bs-table-hover-color);
 }
+
+.alert-success {
+    background-color: #198754 !important;
+}
+
+.alert-error {
+    background-color: #DC3545 !important;
+}
+
+.alert-warning {
+    background-color: #FFC107 !important;
+}
+
+.alert-info {
+    background-color: #0DCAF0 !important;
+}
+
+.mat-simple-snackbar-action{
+    color: #fff!important;
+}

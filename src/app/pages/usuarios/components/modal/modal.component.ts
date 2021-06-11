@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUsuario } from 'src/app/shared-components/models/usuarios';
 import { Usuario } from '../../usuario.model';
@@ -10,20 +10,22 @@ import { Usuario } from '../../usuario.model';
 })
 export class ModalComponent implements OnInit {
   userForm: FormGroup;
-  @Output() onUserCreate = new EventEmitter();
+  user: IUsuario;
+  @Output() onUserCreate = new EventEmitter<IUsuario>();
   constructor() { }
 
   ngOnInit(): void {
-    this.initForm();
+    this.initForm(this.user);
   }
 
-  initForm() {
+  initForm(user: IUsuario = new Usuario()) {
     this.userForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(100)]),
-      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]),
-      surname: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      age: new FormControl('', [Validators.required, Validators.min(1)]),
-      gender: new FormControl('', [Validators.required]),
+      id: new FormControl(user.id, []),
+      email: new FormControl(user.email, [Validators.required, Validators.email, Validators.maxLength(100)]),
+      name: new FormControl(user.name, [Validators.required, Validators.minLength(2), Validators.maxLength(40)]),
+      surname: new FormControl(user.surname, [Validators.required, Validators.minLength(2)]),
+      age: new FormControl(user.age, [Validators.required, Validators.min(1)]),
+      gender: new FormControl(user.gender, [Validators.required]),
     });
   }
   getErrorMessage(prop: string) {
@@ -35,7 +37,7 @@ export class ModalComponent implements OnInit {
   }
 
   createNewUser(formData: IUsuario) {
-    const user = new Usuario(formData.name, formData.surname, formData.age, formData.email, formData.gender)
+    const user = new Usuario(formData.id, formData.name, formData.surname, formData.age, formData.email, formData.gender)
     this.onUserCreate.emit(user);
   }
 }

@@ -1,3 +1,4 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UsuariosComponent } from './pages/usuarios/components/usuarios/usuarios.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './core/layout/admin/admin-layout/admin-layout.component';
 import { SharedComponentsModule } from './shared-components/shared-components.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SharedComponentsModule } from './shared-components/shared-components.mo
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

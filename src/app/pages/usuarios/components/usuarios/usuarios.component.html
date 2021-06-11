@@ -26,9 +26,9 @@
                             <td>{{ user.name }} {{ user.surname }}</td>
                             <td>{{ user.email }}</td>
                             <td class="text-center">{{ user.age }}</td>
-                            <td class="text-center">{{ user.gender }}</td>
+                            <td class="text-center">{{ user.gender.charAt(0) }}</td>
                             <td class="text-center">
-                                <button class="mr-2 valign-middle">
+                                <button (click)="openUserForm(user)" class="mr-2 valign-middle">
                                     <div class="d-flex align-items-center">
                                         <mat-icon title="Editar" class="color-theme" aria-hidden="false"
                                             aria-label="edit">edit
