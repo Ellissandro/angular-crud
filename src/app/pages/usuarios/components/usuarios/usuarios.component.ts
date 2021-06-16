@@ -17,6 +17,7 @@ export class UsuariosComponent implements OnInit {
   particles = [];
   users: IUsuario[] = [];
   temporaryUsers: IUsuario[] = [];
+  loading = false;
   constructor(private usuarioService: UsuariosService,
     private alertService: AlertService,
     public dialog: MatDialog,
@@ -28,10 +29,15 @@ export class UsuariosComponent implements OnInit {
   }
 
   async load() {
-    this.usuarioService.getData().subscribe(response => {
+    this.setLoad(true);
+    this.usuarioService.get().subscribe(response => {
       this.users = response;
       this.temporaryUsers = [...this.users]
-    })
+      this.setLoad(false);
+    },
+      error => {
+        this.alertService.openSnackBar('Ops... Algo deu errado', 'alert-error')
+      })
   }
   generateParticles() {
     for (let i = 0; i < 1000; i++) {
@@ -39,13 +45,13 @@ export class UsuariosComponent implements OnInit {
     }
   }
   openUserForm(user: IUsuario = new Usuario()) {
+
     const dialogRef = this.dialog.open(ModalComponent);
     dialogRef.componentInstance.user = user;
 
     dialogRef.componentInstance.onUserCreate.subscribe((response: IUsuario) => {
       this.addOrUpdateUserList(response);
       this.updateFilter();
-      this.dialog.closeAll();
     });
   }
 
@@ -55,31 +61,42 @@ export class UsuariosComponent implements OnInit {
     dialogRef.componentInstance.title = `Atenção`;
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.temporaryUsers.splice(this.temporaryUsers.findIndex(tempUser => tempUser.id === user.id), 1);
-        this.updateFilter();
-        this.alertService.openSnackBar('Usuário excluído com sucesso', 'alert-success')
+        this.usuarioService.delete(user.idusuario).subscribe(() => {
+          this.temporaryUsers.splice(this.temporaryUsers.findIndex(tempUser => tempUser.idusuario === user.idusuario), 1);
+          this.updateFilter();
+          this.alertService.openSnackBar('Usuário excluído com sucesso', 'alert-success')
+        },
+          error => {
+            this.alertService.openSnackBar('Ops... Algo deu errado', 'alert-error')
+          })
       }
     });
   }
 
   addOrUpdateUserList(response: IUsuario) {
-    let type = '';
-    const index = this.users.findIndex(user => user.id === response.id);
+    const index = this.users.findIndex(user => user.idusuario === response.idusuario);
 
     if (index !== -1) {
-      this.temporaryUsers[index] = response
-      type = 'atualizado'
+      this.userUpdate(response, index);
 
     } else {
-      this.temporaryUsers.push(response);
-      type = 'cadastrado'
-
+      this.userCreate(response);
     }
+  }
 
-    this.alertService.openSnackBar(`Usuário ${type} com sucesso!`, 'alert-success')
+  userUpdate(user: IUsuario, index: number) {
+    this.temporaryUsers[index] = user;
+  }
+
+  userCreate(user: IUsuario) {
+    this.temporaryUsers.push(user);
   }
 
   updateFilter() {
     this.users = this.temporaryUsers;
+  }
+
+  setLoad(status: boolean) {
+    this.loading = status;
   }
 }

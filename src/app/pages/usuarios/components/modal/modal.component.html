@@ -4,14 +4,15 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Nome</mat-label>
-                <input type="text" matInput formControlName="name" required maxlength="40" minlength="2">
-                <mat-error *ngIf="userForm.controls.name.invalid">{{ getErrorMessage('name') }}</mat-error>
+                <input type="text" matInput formControlName="primeironome" required maxlength="40" minlength="2">
+                <mat-error *ngIf="userForm.controls.primeironome.invalid">{{ getErrorMessage('primeironome') }}
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Sobrenome</mat-label>
-                <input type="text" matInput formControlName="surname" required maxlength="40" minlength="2">
-                <mat-error *ngIf="userForm.controls.surname.invalid">{{ getErrorMessage('surname') }}</mat-error>
+                <input type="text" matInput formControlName="sobrenome" required maxlength="40" minlength="2">
+                <mat-error *ngIf="userForm.controls.sobrenome.invalid">{{ getErrorMessage('sobrenome') }}</mat-error>
             </mat-form-field>
         </div>
 
@@ -27,12 +28,12 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Idade</mat-label>
-                <input type="number" matInput formControlName="age" required min="0">
-                <mat-error *ngIf="userForm.controls.age.invalid">{{ getErrorMessage('age') }}</mat-error>
+                <input type="number" matInput formControlName="idade" required min="0">
+                <mat-error *ngIf="userForm.controls.idade.invalid">{{ getErrorMessage('idade') }}</mat-error>
             </mat-form-field>
 
             <label class="label-gender">Sexo: </label>
-            <mat-radio-group aria-label="Selecione uma opção" formControlName="gender">
+            <mat-radio-group aria-label="Selecione uma opção" formControlName="sexo">
                 <mat-radio-button value="Masculino">Masculino</mat-radio-button>
                 <mat-radio-button value="Feminino">Feminino</mat-radio-button>
             </mat-radio-group>
@@ -40,6 +41,11 @@
     </mat-dialog-content>
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Cancelar</button>
-        <button [disabled]="!userForm.valid" type="submit">Salvar</button>
+        <button [disabled]="!userForm.valid || loading" type="submit">
+            <span *ngIf="!loading">Salvar</span>
+            <span>
+                <app-loading *ngIf="loading" type="3"></app-loading>
+            </span>
+        </button>
     </mat-dialog-actions>
 </form>

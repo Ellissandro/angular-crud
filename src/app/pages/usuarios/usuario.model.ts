@@ -1,18 +1,17 @@
 import { IUsuario } from 'src/app/shared-components/models/usuarios';
 export class Usuario implements IUsuario {
-    public id: string;
-    public name: string;
-    public surname: string;
-    public age: number;
-    public email: string;
-    public gender: string;
-    constructor(id?: string, name?: string, surname?: string, age?: number, email?: string, gender?: string) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.email = email;
-        this.gender = gender;
+    idusuario: number;
+    primeironome: string;
+    sobrenome: string;
+    email: string;
+    idade: number;
+    sexo: string; constructor(usuario?: IUsuario) {
+        this.idusuario = usuario?.idusuario;
+        this.primeironome = usuario?.primeironome;
+        this.sobrenome = usuario?.sobrenome;
+        this.idade = usuario?.idade;
+        this.email = usuario?.email;
+        this.sexo = usuario?.sexo;
     }
 
 }

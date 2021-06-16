@@ -1,9 +1,9 @@
 
 export interface IUsuario {
-    id: string;
-    name: string;
-    surname: string;
-    age: number;
+    idusuario: number;
+    primeironome: string;
+    sobrenome: string;
     email: string;
-    gender: string;
+    idade: number;
+    sexo: string;
 }

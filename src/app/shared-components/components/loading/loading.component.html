@@ -1,0 +1,73 @@
+<container-element [ngSwitch]="type">
+    <div *ngSwitchCase="1">
+        <div class="lds-default">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="2">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="3">
+        <div class="lds-circle">
+            <div></div>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="4">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="5">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="6">
+        <span style="margin-right: 9em;" class="text-muted">Carregando...</span>
+        <div class="spring">
+            <span class="bubble bubble1"></span>
+            <span class="bubble bubble2"></span>
+            <span class="bubble bubble3"></span>
+            <span class="bubble bubble4"></span>
+            <span class="bubble bubble5"></span>
+        </div>
+    </div>
+
+    <div *ngSwitchDefault>
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</container-element>
