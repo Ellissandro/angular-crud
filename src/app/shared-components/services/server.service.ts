@@ -5,7 +5,7 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ServerService {
-  private baseUrl = 'http://localhost:3333/'
+  private baseUrl = 'https://elissandrosilva-com.umbler.net/'
   constructor() { }
 
   url(path: string): string {

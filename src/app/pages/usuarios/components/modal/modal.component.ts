@@ -65,6 +65,7 @@ export class ModalComponent implements OnInit {
       this.setLoad(false)
     },
       () => {
+        this.setLoad(false)
         this.alertService.openSnackBar('Ops... Algo deu errado', 'alert-error')
       })
   }
@@ -78,6 +79,7 @@ export class ModalComponent implements OnInit {
       this.setLoad(false)
     },
       () => {
+        this.setLoad(false)
         this.alertService.openSnackBar('Ops... Algo deu errado', 'alert-error')
       })
   }
