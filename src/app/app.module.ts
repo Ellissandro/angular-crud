@@ -7,14 +7,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './core/layout/admin/admin-layout/admin-layout.component';
-import { SharedComponentsModule } from './shared-components/shared-components.module';
+import { AdminLayoutComponent } from './core/layout/admin-layout/admin-layout.component';
+import { SharedComponentsModule } from '../shared/shared-components.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     SharedComponentsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

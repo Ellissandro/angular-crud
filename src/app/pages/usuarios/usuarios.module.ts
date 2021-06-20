@@ -14,7 +14,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { SharedComponentsModule } from 'src/app/shared-components/shared-components.module';
+import { SharedComponentsModule } from 'src/shared/shared-components.module';
 
 
 @NgModule({

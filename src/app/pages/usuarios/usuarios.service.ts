@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IUsuario } from 'src/app/shared-components/models/usuarios';
-import { CRUDService } from 'src/app/shared-components/services/crud.service';
-import { ServerService } from 'src/app/shared-components/services/server.service';
+import { IUsuario } from 'src/shared/models/usuarios';
+import { CRUDService } from 'src/shared/services/crud.service';
+import { ServerService } from 'src/shared/services/server.service';
 
 @Injectable({
   providedIn: 'root'

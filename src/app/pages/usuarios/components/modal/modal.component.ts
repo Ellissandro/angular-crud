@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IUsuario } from '../../../../../shared/models/usuarios';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { IUsuario } from 'src/app/shared-components/models/usuarios';
-import { AlertService } from 'src/app/shared-components/services/alert.service';
 import { Usuario } from '../../usuario.model';
 import { UsuariosService } from '../../usuarios.service';
+import { AlertService } from 'src/shared/services/alert.service';
 
 @Component({
   selector: 'app-modal',

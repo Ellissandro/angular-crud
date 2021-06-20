@@ -1,11 +1,11 @@
 import { Usuario } from './../../usuario.model';
 import { UsuariosService } from './../../usuarios.service';
 import { Component, OnInit } from '@angular/core';
-import { IUsuario } from '../../../../shared-components/models/usuarios';
+import { IUsuario } from '../../../../../shared/models/usuarios';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
-import { DialogConfirmComponent } from 'src/app/shared-components/components/dialog-confirm/dialog-confirm.component';
-import { AlertService } from 'src/app/shared-components/services/alert.service';
+import { DialogConfirmComponent } from 'src/shared/shared-components/dialog-confirm/dialog-confirm.component';
+import { AlertService } from 'src/shared/services/alert.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -40,7 +40,7 @@ export class UsuariosComponent implements OnInit {
       })
   }
   generateParticles() {
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 10; i++) {
       this.particles.push(i)
     }
   }

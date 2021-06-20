@@ -1,4 +1,4 @@
-import { IUsuario } from 'src/app/shared-components/models/usuarios';
+import { IUsuario } from 'src/shared/models/usuarios';
 export class Usuario implements IUsuario {
     idusuario: number;
     primeironome: string;

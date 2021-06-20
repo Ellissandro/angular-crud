@@ -1,5 +1,5 @@
 import { ADMIN_ROUTES } from './core/routes/admin.routes';
-import { AdminLayoutComponent } from './core/layout/admin/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './core/layout/admin-layout/admin-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 

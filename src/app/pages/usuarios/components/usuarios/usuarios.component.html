@@ -44,9 +44,6 @@
                             </td>
                         </tr>
                     </tbody>
-                    <div id="particle-container">
-                        <div *ngFor="let p of particles" class="particle"></div>
-                    </div>
                 </table>
                 <div *ngIf="users.length === 0 && !loading" class="text-muted mt-3 text-center">
                     <span>Nenhum registro encontrado</span>
@@ -56,5 +53,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="particle-container">
+        <div *ngFor="let p of particles" class="particle"></div>
     </div>
 </section>

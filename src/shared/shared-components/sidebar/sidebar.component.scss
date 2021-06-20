@@ -1,0 +1,61 @@
+$theme-color: #7b1fa2;
+$text-black: #333;
+$text-color-white: #fff;
+
+.e-navbar {
+    width: 260px;
+    background: rgba(#fff, 1);
+    position: fixed;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    left: 0;
+    height: 100%;
+    z-index: 20;
+    top: 0;
+
+    nav {
+        margin-top: 1rem;
+        ul {
+            li {
+                cursor: pointer;
+                padding: 15px 30px;
+                font-weight: 400;
+                letter-spacing: 1.1px;
+                color: $text-black;
+
+                a {
+                    text-decoration: none;
+                }
+
+                &:hover {
+                    background-color: rgba($theme-color, 0.1);
+                }
+
+                &.router-link-active {
+                    background-color: rgba($theme-color, 0.6);
+                    color: $text-color-white;
+                }
+            }
+        }
+    }
+}
+
+.logo {
+    text-align: center;
+    margin: 1rem 0;
+    .logo-icon {
+        width: 100%;
+        font-size: 4rem;
+        color: var(--primary-color);
+    }
+}
+
+.engrenagem {
+    animation: gira 15s linear infinite;
+    transform-origin: 130px 30px;
+}
+
+@keyframes gira {
+    to {
+        transform: rotate(360deg);
+    }
+}
